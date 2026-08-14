@@ -20,11 +20,46 @@
         CF_BASE: "https://d2bihrgvtn9bga.cloudfront.net"
       };
     </script>
-    <script type="module" crossorigin src="/assets/index-A0__e8L9.js"></script>
+    <script type="module" crossorigin src="/assets/index-V_1VKDKl.js"></script>
   </head>
 
   <body>
     <div id="root"></div>
 
+<script>
+  // Single Page Apps for GitHub Pages
+  // https://github.com/rafgraph/spa-github-pages
+  //
+  // Pairs with public/404.html: decodes a path 404.html encoded into the
+  // query string back into a real pathname via the History API, before the
+  // app (and its BrowserRouter) ever mounts.
+  (function (l) {
+    if (l.search[1] === "/") {
+      const decoded = l.search
+        .slice(1)
+        .split("&")
+        .map((s) => s.replace(/~and~/g, "&"))
+        .join("?");
+      window.history.replaceState(null, "", l.pathname.slice(0, -1) + decoded + l.hash);
+    }
+  })(window.location);
+
+  // One-time migration for old bookmarked hash-style admin links
+  // (studyfeed.org/#/admin/...), from before this app switched from
+  // HashRouter to BrowserRouter. Real participant launch links never put
+  // anything in the hash, so this only ever matters for /admin.
+  (function () {
+    const path = window.location.pathname;
+    if (path !== "/" && path !== "") return;
+    const h = window.location.hash || "";
+    if (!h.startsWith("#/")) return;
+    const rest = h.slice(1);
+    const hashPath = rest.split("?")[0];
+    const hashQuery = rest.includes("?") ? rest.slice(rest.indexOf("?") + 1) : "";
+    const existingSearch = window.location.search ? window.location.search.slice(1) : "";
+    const mergedQuery = [existingSearch, hashQuery].filter(Boolean).join("&");
+    window.history.replaceState(null, "", hashPath + (mergedQuery ? "?" + mergedQuery : ""));
+  })();
+</script>
   </body>
 </html>
